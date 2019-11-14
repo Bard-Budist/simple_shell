@@ -2,7 +2,7 @@
 .\" Contact 1141@holbertonschool.com, 1192@holbertonschool.com to correct errors or typos.
 .TH man 8 "14 Nov 2019" "1.0" "man_1_simple_shell"
 .SH NAME
-man_1_simple_shell \- created by GIOVANNI PEREZ and ANDRES GARCIA  
+man_1_simple_shell \- created by GIOVANNI PEREZ and ANDRES GARCIA
 .SH SYNOPSIS
 man_1_simple_shell
 .SH DESCRIPTION
@@ -14,7 +14,7 @@ The shell is necessary to invoke or execute the different programs available on 
 .SH OPTIONS
 The nuseradd does not take any options. However, you can supply username.
 .SH SEE ALSO
-useradd(8), passwd(5), nuseradd.debian(8) 
+useradd(8), passwd(5), nuseradd.debian(8)
 .SH BUGS
 No known bugs.
 .SH AUTHOR
