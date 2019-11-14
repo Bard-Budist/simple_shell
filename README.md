@@ -1,6 +1,6 @@
-# Simple Shell
+# Simple Shell #
 
-Simple Shell create was Andres Garcia and Giovanni Perez
+# Simple Shell create was Andres Garcia and Giovanni Perez #
 
 ![enter image description here](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg)
 
@@ -13,5 +13,3 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id dui ut puru
 ```bash
 Lorem
 ```
-## Work
-
