@@ -13,7 +13,7 @@ void free_grid(char **grid);
 size_t _getline(char *string);
 void functionLs();
 int executeCommand(char *file);
-int checkCommand (char *path, char *ps);
+	int checkCommand (char *path);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 #endif
