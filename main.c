@@ -8,7 +8,7 @@ int main(void)
 {
     char *buffer = NULL, **TokenP = NULL;
     size_t bufsize = 32, characters;
-    int i = 0, j = 0, k = 0;
+    int j = 0, k = 0;
 
     while (1)
     {
@@ -45,7 +45,6 @@ int main(void)
             k++;
         free_grid(TokenP, k);
         free(buffer);
-        i++;
     }
     return (0);
 }
@@ -97,6 +96,11 @@ void checkCommand(char *string, char **Tokens)
     }
     free(Tokens[0]);
     Tokens[0] = malloc(sizeof(char) * strlen(cadena) + 1);
+    if (Tokens[0] == NULL)
+    {
+        perror("Unable memory llocation");
+        exit(1);
+    }
     strcpy(Tokens[0], cadena);
     if (checkExecutable(cadena) == 1)
     {
