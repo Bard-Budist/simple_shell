@@ -6,72 +6,73 @@
  **/
 int main(void)
 {
-    char *buffer = NULL, **TokenP = NULL;
-    size_t bufsize = 32, characters;
-    int j = 0, k = 0;
+	char *buffer = NULL, **TokenP = NULL;
+	size_t bufsize = 32, characters;
+	int j = 0, k = 0;
 
-    while (1)
-    {
-        buffer = calloc(bufsize, sizeof(char));
-        if (buffer == NULL)
-        {
-            perror("Unable to allocate buffer");
-            exit(1);
-        }
-        k = 0;
-        TokenP  = calloc(80, sizeof(char));
-        if (TokenP == NULL)
-        {
-            perror("Unable to allocate buffer");
-            exit(1);
-        }
-        printf("HolbiPro$ ");
-        characters = getline(&buffer, &bufsize, stdin);
-        if (characters == (size_t)-1)
-        {
-            j = 0;
-            while (TokenP[j] != NULL)
-                j++;
-            free_grid(TokenP, j);
-            free(buffer);
-            break;
-        }
-        TokenP = getTokens(buffer, TokenP);
-        if (TokenP != NULL)
-        {
-            checkCommand(TokenP[0], TokenP);
-        }
-        while (TokenP[k] != NULL)
-            k++;
-        free_grid(TokenP, k);
-        free(buffer);
-    }
-    return (0);
+	while (1)
+	{
+		buffer = calloc(bufsize, sizeof(char));
+		if (buffer == NULL)
+		{
+			perror("Unable to allocate buffer");
+			exit(1);
+		}
+		k = 0;
+		TokenP  = calloc(80, sizeof(char));
+		if (TokenP == NULL)
+		{
+			perror("Unable to allocate buffer");
+			exit(1);
+		}
+		printf("HolbiPro$ ");
+		characters = getline(&buffer, &bufsize, stdin);
+		if (characters == (size_t)-1)
+		{
+			j = 0;
+			while (TokenP[j] != NULL)
+				j++;
+			free_grid(TokenP, j);
+			free(buffer);
+			break;
+		}
+		TokenP = getTokens(buffer, TokenP);
+		if (TokenP != NULL)
+			checkCommand(TokenP[0], TokenP);
+		while (TokenP[k] != NULL)
+			k++;
+		free_grid(TokenP, k);
+		free(buffer);
+	}
+	return (0);
 }
 /**
  * free_grid - function that free the double pointer
  * @grid : double pointer for the Tokens
- * @heigh : height size of the grid
+ * @height : height size of the grid
  **/
 void free_grid(char **grid, int height)
 {
-    int i = 0;
-    for (i = 0; i < height; i++)
-        if (grid[i] != NULL)
-        {
-            free(grid[i]);
-        }
-    free(grid);
+	int i = 0;
+
+	for (i = 0; i < height; i++)
+		if (grid[i] != NULL)
+		{
+			free(grid[i]);
+		}
+	free(grid);
 
 }
 /**
- * checkCommand - function that check the input whit the command in directory /bin/
+ * checkCommand - check the input whit the command in directory /bin/
  * @Tokens: double pointer of input
+ * @string: Pointer of input
  **/
 void checkCommand(char *string, char **Tokens)
 {
 	char *cadena = NULL;
 	int i = 0;
+
 	while (Tokens[i] != NULL)
 		i++;
 	if (i > 1)
@@ -91,11 +92,12 @@ void checkCommand(char *string, char **Tokens)
 	}
 	else
 	{
-		cadena = malloc(sizeof(char) * strlen(string));
+		cadena = malloc(sizeof(char) * strlen(string) + 1);
 		strcpy(cadena, string);
 	}
 	strcpy(Tokens[0], cadena);
 	executeFunction(Tokens[0], Tokens);
+	free(cadena);
 }
 /**
  * checkExecutable - function that execute the command scince screen
@@ -105,39 +107,40 @@ void checkCommand(char *string, char **Tokens)
  **/
 int checkExecutable(char *cadena)
 {
-    if (access(cadena, F_OK | X_OK) == 0)
-    {
-        return (1);
-    }
-    return (0);
+	if (access(cadena, F_OK | X_OK) == 0)
+	{
+		return (1);
+	}
+	return (0);
 }
 /**
  * getTokens - function that generate Tokens
- * @entrada : input
- *
- * Return : TokenP
+ * @entrada : pointer of input
+ * @TokenP: double pointer of input
+ * Return: Always TokenP
  **/
 char **getTokens(char *entrada, char **TokenP)
 {
-    char *TokenT;
-    int i;
-    TokenT = strtok(entrada, " ");
-    i = 0;
-    while (TokenT != NULL)
-    {
-        TokenP[i] = malloc((strlen(TokenT) + 1) * sizeof(char));
-        if (TokenP[i] == NULL)
-        {
-            free(entrada);
-            free(TokenP);
-            perror("Error");
-            return (NULL);
-        }
-        strcpy(TokenP[i], TokenT);
-        TokenT = strtok(NULL, " ");
-        printf("%s\n",TokenP[i]);
-        i++;
-    }
-    free(TokenT);
-    return (TokenP);
+	char *TokenT;
+	int i;
+
+	TokenT = strtok(entrada, " ");
+	i = 0;
+	while (TokenT != NULL)
+	{
+		TokenP[i] = malloc((strlen(TokenT) + 1) * sizeof(char));
+		if (TokenP[i] == NULL)
+		{
+			free(entrada);
+			free(TokenP);
+			perror("Error");
+			return (NULL);
+		}
+		strcpy(TokenP[i], TokenT);
+		TokenT = strtok(NULL, " ");
+		printf("%s\n", TokenP[i]);
+		i++;
+	}
+	free(TokenT);
+	return (TokenP);
 }

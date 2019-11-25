@@ -1,11 +1,10 @@
 #include "fun.h"
 /**
+ * executeFunction - function that execute the command since screen
+ * @cadena: pointer of input
+ * @Argumens: double pointer of input
  *
- *
- *
- *
- *
- *
+ * Return: Always0
 */
 int executeFunction(char *cadena, char **Argumens)
 {
@@ -13,7 +12,6 @@ int executeFunction(char *cadena, char **Argumens)
 	int status;
 
 	child = fork();
-
 	if (child == 0)
 	{
 		if (checkExecutable(cadena) == 1)
