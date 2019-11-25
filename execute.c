@@ -7,7 +7,7 @@
  *
  *
 */
-int  executeFunction(char *cadena, char **Argumens)
+int executeFunction(char *cadena, char **Argumens)
 {
 	pid_t child;
 	int status;
@@ -19,6 +19,12 @@ int  executeFunction(char *cadena, char **Argumens)
 		if (checkExecutable(cadena) == 1)
 		{
 			execve(cadena, Argumens, NULL);
+		}
+		else
+		{
+			free(cadena);
+			perror("./shell");
+			exit(127);
 		}
 	}
 	else

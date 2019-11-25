@@ -92,15 +92,7 @@ void checkCommand(char *string, char **Tokens)
 		strcpy(cadena, string);
 	}
 	strcpy(Tokens[0], cadena);
-	if (checkExecutable(cadena) == 1)
-	{
-		executeFunction(Tokens[0], Tokens);
-	}
-	else
-	{
-		perror("./shell");
-		exit(127);
-	}
+	executeFunction(Tokens[0], Tokens);
 }
 /**
  * checkExecutable - function that execute the command scince screen
