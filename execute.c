@@ -6,6 +6,7 @@
  *
  * Return: Always0
 */
+
 int executeFunction(char *cadena, char **Argumens)
 {
 	pid_t child;
@@ -31,3 +32,42 @@ int executeFunction(char *cadena, char **Argumens)
 	}
 	return (0);
 }
+
+char *deleteSpaces(char *cadena)
+{
+	int i = 0, j = 0, len;
+	char copy[1024], *retorno;
+
+	len = strlen(cadena);
+	while (i > len)
+	{
+		if (cadena[i] )
+		{
+			/* code */
+		}
+		
+	}
+	
+
+	for (i = 0; i < len; i++)
+	{
+		if (cadena[i] != ' ' && cadena[i] != '\n')
+		{
+			copy[j] = cadena[i];
+			j++;
+			if (cadena[i + 1] == ' ')
+			{
+				copy[j] = ' ';
+				i++;
+				j++;
+			}
+		}
+	}
+	copy[j] = '\0';
+	retorno = malloc(sizeof(char) * strlen((copy) + 1));
+	strcpy(retorno, copy);
+	free(cadena);
+	return (retorno);
+}
+
+

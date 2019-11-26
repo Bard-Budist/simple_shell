@@ -95,9 +95,16 @@ void checkCommand(char *string, char **Tokens)
 		cadena = malloc(sizeof(char) * strlen(string) + 1);
 		strcpy(cadena, string);
 	}
-	strcpy(Tokens[0], cadena);
-	executeFunction(Tokens[0], Tokens);
-	free(cadena);
+	free(Tokens[0]);
+	Tokens[0] = malloc(sizeof(char) * strlen(cadena) + 1);
+	if (Tokens[0] == NULL)
+	{
+		perror("Unable memory llocation");
+		exit(1);
+		}
+		strcpy(Tokens[0], cadena);
+		free(cadena);
+		executeFunction(Tokens[0], Tokens);
 }
 /**
  * checkExecutable - function that execute the command scince screen

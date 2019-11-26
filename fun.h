@@ -21,4 +21,5 @@ void free_grid(char **grid, int height);
 int checkExecutable(char *cadena);
 char **getTokens(char *entrada, char **Token);
 int  executeFunction(char *cadena, char **Argumens);
+char *deleteSpaces(char *cadena);
 #endif
