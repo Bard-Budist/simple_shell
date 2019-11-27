@@ -40,8 +40,10 @@ int executeFunction(char *cadena, char **Argumens)
  **/
 char *deleteSpaces(char *cadena)
 {
-	int i = 0, j = 0;
+	int i = 0, j = 0, len;
 	char copy[1024], *retorno;
+
+	len = _strlen(cadena);
 
 	for (i = 0; i < len; i++)
 	{
@@ -58,8 +60,8 @@ char *deleteSpaces(char *cadena)
 		}
 	}
 	copy[j] = '\0';
-	retorno = malloc(sizeof(char) * strlen((copy) + 1));
-	strcpy(retorno, copy);
+	retorno = malloc(sizeof(char) * _strlen((copy) + 1));
+	_strcpy(retorno, copy);
 	free(cadena);
 	return (retorno);
 }

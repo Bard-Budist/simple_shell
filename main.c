@@ -7,7 +7,7 @@
 int main(void)
 {
 	char *buffer = NULL, **TokenP = NULL;
-	size_t bufsize = 32, characters;
+	size_t bufsize = 80, characters;
 	int j = 0, k = 0;
 
 	while (1)
@@ -25,9 +25,12 @@ int main(void)
 			perror("Unable to allocate buffer");
 			exit(1);
 		}
-		printf("HolbiPro$ ");
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			_puts("HolbiPro$ ");
+		}
 		characters = getline(&buffer, &bufsize, stdin);
-		if (characters == (size_t)-1)
+		if (characters == (size_t)-1 || _strcmp(buffer, "exit\n") == 0)
 		{
 			j = 0;
 			while (TokenP[j] != NULL)
@@ -61,7 +64,6 @@ void free_grid(char **grid, int height)
 			free(grid[i]);
 		}
 	free(grid);
-
 }
 /**
  * checkCommand - check the input whit the command in directory /bin/
@@ -77,32 +79,32 @@ void checkCommand(char *string, char **Tokens)
 		i++;
 	if (i > 1)
 	{
-		Tokens[i - 1][strlen(Tokens[i - 1]) - 1] = '\0';
+		Tokens[i - 1][_strlen(Tokens[i - 1]) - 1] = '\0';
 	}
 	else if (i == 1)
 	{
-		string[strlen(string) - 1] = '\0';
+		string[_strlen(string) - 1] = '\0';
 	}
 	Tokens[i] = NULL;
 	if (string[0] != '/')
 	{
-		cadena = malloc((sizeof(char) * 6) + strlen(string));
-		strcpy(cadena, "/bin/");
-		strcat(cadena, string);
+		cadena = malloc((sizeof(char) * 6) + _strlen(string));
+		_strcpy(cadena, "/bin/");
+		_strcat(cadena, string);
 	}
 	else
 	{
-		cadena = malloc(sizeof(char) * strlen(string) + 1);
-		strcpy(cadena, string);
+		cadena = malloc(sizeof(char) * _strlen(string) + 1);
+		_strcpy(cadena, string);
 	}
 	free(Tokens[0]);
-	Tokens[0] = malloc(sizeof(char) * strlen(cadena) + 1);
+	Tokens[0] = malloc(sizeof(char) * _strlen(cadena) + 1);
 	if (Tokens[0] == NULL)
 	{
 		perror("Unable memory llocation");
 		exit(1);
 	}
-	strcpy(Tokens[0], cadena);
+	_strcpy(Tokens[0], cadena);
 	free(cadena);
 	executeFunction(Tokens[0], Tokens);
 }
@@ -135,7 +137,7 @@ char **getTokens(char *entrada, char **TokenP)
 	i = 0;
 	while (TokenT != NULL)
 	{
-		TokenP[i] = malloc((strlen(TokenT) + 1) * sizeof(char));
+		TokenP[i] = malloc((_strlen(TokenT) + 1) * sizeof(char));
 		if (TokenP[i] == NULL)
 		{
 			free(entrada);
@@ -143,9 +145,8 @@ char **getTokens(char *entrada, char **TokenP)
 			perror("Error");
 			return (NULL);
 		}
-		strcpy(TokenP[i], TokenT);
+		_strcpy(TokenP[i], TokenT);
 		TokenT = strtok(NULL, " ");
-		printf("%s\n", TokenP[i]);
 		i++;
 	}
 	free(TokenT);
