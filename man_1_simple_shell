@@ -1,21 +1,104 @@
 .\" man_1_simple_shell .
 .\" Contact 1141@holbertonschool.com, 1192@holbertonschool.com to correct errors or typos.
-.TH man 8 "14 Nov 2019" "1.0" "man_1_simple_shell"
+.TH man 1 "14 Nov 2019" "1.0" "man_1_simple_shell"
 .SH NAME
 man_1_simple_shell \- created by GIOVANNI PEREZ and ANDRES GARCIA
 .SH SYNOPSIS
 man_1_simple_shell
+Description:
 .SH DESCRIPTION
 In computing, the shell or command interpreter or command interpreter is the computer program that provides a user interface to access the operating system services.
-Depending on the type of interface they use, shells can be:
+Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.
+.SH INVOCATION:
+If any of the files exist but cannot be read, bash reports an error.
+If any of the commands entered from the terminal do not exist, bash reports an error.
+If any of the entered commands exist and can be read, bash executes the entered command followed by a new line.
+When the project shell starts, bash reads and executes the command entered from ~ / bin /, if the files exist.
+When a login shell exits, bash reads and executes commands from the ~ / .bash / files, if the files exist.
 
-Text lines (CLI, Command-Line Interface, command line interface), Graphics (GUI, Graphical User Interface), Natural language (NUI, Natural User Interface, natural user interface).
-The shell is necessary to invoke or execute the different programs available on the computer.
-.SH OPTIONS
-The nuseradd does not take any options. However, you can supply username.
-.SH SEE ALSO
-useradd(8), passwd(5), nuseradd.debian(8)
+.SH DEFINITIONS:
+The following definitions are used in the rest of this document:
+
+White:
+A space or tabulation.
+
+Word:
+A sequence of characters considered as a single unit by the shell. Also known as token.
+name.
+
+A word consisting only of alphanumeric characters and underscores, and beginning with an alphabetic character or an underscore. Also referred to as an identifier.
+
+.SH THE COMMANDS EXECUTABLES IN THIS SHELL ARE:
+
+/ bin: Basic (or binary) system executables, when, for example, we execute the cp command we actually execute / bin / cp.
+
+ark: Shows the architecture of the computer.
+
+cp: copy a file to another place.
+
+gzip: compress / decompress
+
+login: Log in as another user.
+
+more: Shows a file little by little (like them).
+
+rm: Delete files
+
+sh, bash: Interpreters of commands.
+
+ls: Shows the contents of a folder.
+
+mount: Mount a device in a folder.
+
+rmdir: Delete a folder
+
+sleep: "Sleep" the system during the seconds you indicate.
+
+touch: Change the time of last access and modification of a file, if it does not exist, create it.
+
+cat: Shows the contents of a file.
+
+date: Shows the system time.
+
+echo: shows the content of variables or what you indicate.
+
+kernelversion: shows the kernel version
+
+ps: Shows user processes, with ps aux shows all.
+
+chgrp: Change a file group.
+
+grep: Shows lines following a pattern.
+
+kill: "Kill" a process.
+
+mkdir: Create a folder.
+
+pwd: Shows the path of the folder where we are.
+
+su: Change user temporarily.
+
+umount: Disassemble a device.
+
+chmod: Change the permissions of a file.
+
+ln: Create a link between files or folders.
+
+mv: Move a file.
+
+Join me: System information.
+
+chown: Change the user of a file.
+
+dir: Similar to ls.
+
+netstat: Network information
+.
+tar: Group files into a .tar
+
 .SH BUGS
 No known bugs.
+If you discover any error, please send us the information about Giovanni Perez's email: 1192@holbertonschool.com, or Andres Garcia: 1141@holbertonschool.com
+
 .SH AUTHOR
 GIOVANNI PEREZ and ANDRES GARCIA
