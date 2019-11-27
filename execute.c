@@ -49,7 +49,7 @@ char *deleteSpaces(char *cadena)
 	}
 	
 
-	for (i = 0; i < len; i++)
+		for (i = 0; i < len; i++)
 	{
 		if (cadena[i] != ' ' && cadena[i] != '\n')
 		{
