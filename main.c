@@ -14,10 +14,8 @@ int main(void)
 	{
 		buffer = calloc(bufsize, sizeof(char));
 		if (buffer == NULL)
-		{
 			perror("Unable to allocate buffer");
 			exit(1);
-		}
 		k = 0;
 		TokenP  = calloc(80, sizeof(char));
 		if (TokenP == NULL)
