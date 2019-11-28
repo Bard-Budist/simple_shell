@@ -96,9 +96,22 @@ netstat: Network information
 .
 tar: Group files into a .tar
 
-.SH BUGS
+.SH EXAMPLE OF THE COMMAND
+
+suppose that the following command is entered by keyboard: ls -l, The result when executing said command will be the all files and the current in directory.
+
+.SH Exit Status
+  0 if ok
+  1 if error
+
+.SH AUTHOR
+ANDRES GARCIA and GIOVANNI PEREZ
+
+.SH REPORTING BUGS
 No known bugs.
 If you discover any error, please send us the information about Giovanni Perez's email: 1192@holbertonschool.com, or Andres Garcia: 1141@holbertonschool.com
 
-.SH AUTHOR
-GIOVANNI PEREZ and ANDRES GARCIA
+.SH COPYRIGHT
+Copyright Â 2019Free Software created in Holberton School Medellin by Andres Garcia and Giovanni Perez, version of the Shell 1.0
+.SH SEE ALSO
+Full documentation at: DASH(1)
