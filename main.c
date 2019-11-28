@@ -12,21 +12,21 @@ int main(void)
 
 	while (1)
 	{
-		buffer = calloc(bufsize, sizeof(char));
+		buffer = malloc(sizeof(char) * bufsize);
 		if (buffer == NULL)
+		{
 			perror("Unable to allocate buffer");
 			exit(1);
+		}
 		k = 0;
-		TokenP  = calloc(80, sizeof(char));
+		TokenP  = malloc(sizeof(char) * 80);
 		if (TokenP == NULL)
 		{
 			perror("Unable to allocate buffer");
 			exit(1);
 		}
 		if (isatty(STDIN_FILENO) == 1)
-		{
 			_puts("HolbiPro$ ");
-		}
 		characters = getline(&buffer, &bufsize, stdin);
 		if (characters == (size_t)-1 || _strcmp(buffer, "exit\n") == 0)
 		{
